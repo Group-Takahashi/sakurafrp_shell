@@ -1,0 +1,27 @@
+#!/bin/bash
+screen_cn=$"cn"
+screen_us=$"us"
+screen_hk=$"hk"
+screen_gu=$"gu"
+cmd=$"frpc"
+cd /usr/local/bin/us
+screen -dmS $screen_us
+screen -x -S $screen_us -p 0 -X stuff "$cmd"
+screen -x -S $screen_us -p 0 -X stuff $'\n'
+screen -x -S $screen_us -p 0 -X stuff $'exit'
+cd /usr/local/bin/hk
+screen -dmS $screen_hk
+screen -x -S $screen_hk -p 0 -X stuff "$cmd"
+screen -x -S $screen_hk -p 0 -X stuff $'\n'
+screen -x -S $screen_hk -p 0 -X stuff $'exit'
+cd /usr/local/bin/gu
+screen -dmS $screen_gu
+screen -x -S $screen_gu -p 0 -X stuff "$cmd"
+screen -x -S $screen_gu -p 0 -X stuff $'\n'
+screen -x -S $screen_gu -p 0 -X stuff $'exit'
+cd /usr/local/bin
+screen -dmS $screen_cn
+screen -x -S $screen_cn -p 0 -X stuff "$cmd"
+screen -x -S $screen_cn -p 0 -X stuff $'\n'
+screen -x -S $screen_cn -p 0 -X stuff $'exit'
+screen -r -s $screen_cn
